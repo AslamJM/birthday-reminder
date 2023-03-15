@@ -8,7 +8,7 @@ type Props = {
   contact: Contact;
 };
 
-const BirthdayCard = ({contact}: Props) => {
+const ContactCard = ({contact}: Props) => {
   return (
     <Flex
       mx={3}
@@ -26,12 +26,22 @@ const BirthdayCard = ({contact}: Props) => {
           {dayjs(contact.dob).format('DD, MMMM')}
         </Text>
       </Box>
-      <IconButton
-        icon={<Feather name="send" color={Colors.primary} size={30} />}
-        borderRadius="full"
-      />
+      <Box p={3}>
+        <Text fontSize={14}>{contact.phone}</Text>
+        <Text fontSize={14}>{contact.email}</Text>
+      </Box>
+      <Flex direction="row">
+        <IconButton
+          icon={<Feather name="edit" color={Colors.primary} size={22} />}
+          borderRadius="full"
+        />
+        <IconButton
+          icon={<Feather name="trash" color={Colors.primary} size={22} />}
+          borderRadius="full"
+        />
+      </Flex>
     </Flex>
   );
 };
 
-export default BirthdayCard;
+export default ContactCard;

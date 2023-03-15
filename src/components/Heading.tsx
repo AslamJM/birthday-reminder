@@ -8,7 +8,7 @@ type Props = {
 export default function AppHeading({text}: Props) {
   return (
     <Box px={2}>
-      <Heading size="md" mb={0.5}>
+      <Heading size="sm" my={1}>
         {text}
       </Heading>
       <Divider mb={2} />

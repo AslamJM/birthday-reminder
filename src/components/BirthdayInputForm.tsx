@@ -17,8 +17,8 @@ import React, {useState} from 'react';
 import {Colors} from '../theme/colors';
 import addContact from '../firebase/addContact';
 
-import {useAtom} from 'jotai';
-import {loadingAtom} from '../atoms';
+import {useAtom, useSetAtom} from 'jotai';
+import {loadingAtom, contactsAtom} from '../atoms';
 
 const BirthdayForm = () => {
   // date picker state
@@ -34,6 +34,7 @@ const BirthdayForm = () => {
 
   //jotai
   const [loading, setLoading] = useAtom(loadingAtom);
+  const setContacts = useSetAtom(contactsAtom);
 
   const toast = useToast();
 
@@ -57,17 +58,30 @@ const BirthdayForm = () => {
       mail,
     };
     try {
-      await addContact(input);
+      const res = await addContact(input);
+      const docs = await res
+        .collection('users/RJeexA94uVxuTqFP3VZs/contacts')
+        .get();
+      const contacts = docs.docs.map(doc => doc.data() as Contact);
+
+      setContacts(contacts);
+
       toast.show({description: 'contact added'});
     } catch (error: any) {
       toast.show({description: error.message});
     } finally {
+      setFname('');
+      setLname('');
+      setPhone('');
+      setMail('');
+      setPdate(new Date());
+      setDate(null);
       setLoading(false);
     }
   };
 
   return (
-    <Box px={3}>
+    <Box px={3} mb={4}>
       <Heading textAlign="center" size="md" my={1}>
         Add Birthday
       </Heading>
@@ -145,6 +159,7 @@ const BirthdayForm = () => {
         <Button
           fontSize={20}
           onPress={() => handleSubmit()}
+          disabled={fname.length === 0 || phone.length === 0 || !date}
           isLoading={loading}
           isLoadingText="Submitting">
           Add Birdthday

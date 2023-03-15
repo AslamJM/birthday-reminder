@@ -1,7 +1,7 @@
 type Contact = {
   id: string;
   name: string;
-  dob?: Date;
+  dob: string;
   phone: string;
   email?: string;
 };

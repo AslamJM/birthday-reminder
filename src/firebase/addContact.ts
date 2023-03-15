@@ -8,7 +8,8 @@ type AddContactInput = {
 };
 
 export default async function addContact(input: AddContactInput) {
-  await firestore()
+  const res = await firestore()
     .collection('users/RJeexA94uVxuTqFP3VZs/contacts')
     .add(input);
+  return res;
 }

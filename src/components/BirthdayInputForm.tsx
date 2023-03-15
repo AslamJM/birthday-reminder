@@ -6,6 +6,7 @@ import {
   FormControl,
   Spacer,
   Button,
+  useToast,
 } from 'native-base';
 import DateTimePicker, {
   DateTimePickerEvent,
@@ -14,8 +15,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import React, {useState} from 'react';
 import {Colors} from '../theme/colors';
+import addContact from '../firebase/addContact';
+
+import {useAtom} from 'jotai';
+import {loadingAtom} from '../atoms';
 
 const BirthdayForm = () => {
+  // date picker state
   const [date, setDate] = useState<Date | null>(null);
   const [pdate, setPdate] = useState(new Date());
   const [show, setShow] = useState(false);
@@ -26,6 +32,11 @@ const BirthdayForm = () => {
   const [phone, setPhone] = useState('');
   const [mail, setMail] = useState('');
 
+  //jotai
+  const [loading, setLoading] = useAtom(loadingAtom);
+
+  const toast = useToast();
+
   const onChange = (event: DateTimePickerEvent, selectedDate?: Date) => {
     if (!selectedDate) {
       return;
@@ -34,6 +45,24 @@ const BirthdayForm = () => {
       setShow(false);
       setPdate(currentDate);
       setDate(currentDate);
+    }
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    const input = {
+      name: fname + ' ' + lname,
+      dob: date?.toISOString()!,
+      phone,
+      mail,
+    };
+    try {
+      await addContact(input);
+      toast.show({description: 'contact added'});
+    } catch (error: any) {
+      toast.show({description: error.message});
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,7 +142,13 @@ const BirthdayForm = () => {
         </FormControl>
       </Box>
       <Box mt={2}>
-        <Button fontSize={20}>Add Birdthday</Button>
+        <Button
+          fontSize={20}
+          onPress={() => handleSubmit()}
+          isLoading={loading}
+          isLoadingText="Submitting">
+          Add Birdthday
+        </Button>
       </Box>
     </Box>
   );

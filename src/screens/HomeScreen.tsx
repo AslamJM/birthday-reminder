@@ -1,10 +1,10 @@
 import React from 'react';
+import {FlatList} from 'native-base';
 import {Box} from 'native-base';
 import BirthdayCard from '../components/BirthdayCard';
 import AppHeading from '../components/Heading';
 import CalenderComponent from '../components/CalenderComponent';
 
-import {contacts} from '../data/contacts';
 import {useContacts} from '../firebase/useContacts';
 
 export default function HomeScreen() {
@@ -16,9 +16,10 @@ export default function HomeScreen() {
     <Box>
       <CalenderComponent />
       <AppHeading text="Today" />
-      {contacts.map(c => (
-        <BirthdayCard key={c.id} contact={c} />
-      ))}
+      <FlatList
+        data={data}
+        renderItem={({item}) => <BirthdayCard contact={item} />}
+      />
     </Box>
   );
 }

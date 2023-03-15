@@ -29,3 +29,11 @@ export const useContacts = () => {
   }, [setContacts]);
   return {data, error, loading};
 };
+
+export async function getContacts(userId: string) {
+  const response = await firestore()
+    .collection(`users/${userId}/contacts`)
+    .get();
+  const contactArr = response.docs.map(doc => doc.data() as Contact);
+  return contactArr;
+}

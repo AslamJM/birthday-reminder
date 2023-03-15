@@ -63,6 +63,7 @@ const BirthdayForm = () => {
         .collection('users/RJeexA94uVxuTqFP3VZs/contacts')
         .get();
       const contacts = docs.docs.map(doc => doc.data() as Contact);
+      console.log(contacts);
 
       setContacts(contacts);
 

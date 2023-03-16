@@ -13,3 +13,11 @@ export default async function addContact(input: AddContactInput) {
     .add(input);
   return res;
 }
+
+export async function deleteContact(id: string, userId: string) {
+  const res = await firestore()
+    .collection(`users/${userId}/contacts`)
+    .doc(id)
+    .delete();
+  return res;
+}

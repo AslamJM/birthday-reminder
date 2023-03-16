@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {NativeBaseProvider, Box} from 'native-base';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useEffect, useCallback, useState} from 'react';
+import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import AppTab from './src/navigation/AppNavigator';
-import {Colors} from './src/theme/colors';
 import {theme} from './src/theme/theme';
 import {useAtomValue, useSetAtom} from 'jotai';
 import {userIdAtom, contactsAtom} from './src/atoms';
@@ -12,10 +12,11 @@ import WelcomeScreen from './src/screens/WelcomeScreen';
 export default function App() {
   const userId = useAtomValue(userIdAtom);
   const setContacts = useSetAtom(contactsAtom);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
+      setLoading(true);
       const contacts = await getContacts(userId);
       setContacts(contacts);
     } catch (error) {
@@ -23,21 +24,21 @@ export default function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  getData();
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Box bg={Colors.bg} flex={1}>
-        {loading ? (
-          <WelcomeScreen />
-        ) : (
-          <NavigationContainer>
-            <AppTab />
-          </NavigationContainer>
-        )}
-      </Box>
+      {loading ? (
+        <WelcomeScreen />
+      ) : (
+        <NavigationContainer>
+          <AppTab />
+        </NavigationContainer>
+      )}
     </NativeBaseProvider>
   );
 }

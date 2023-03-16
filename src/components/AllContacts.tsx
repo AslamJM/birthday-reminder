@@ -1,21 +1,25 @@
-import {Box, FlatList} from 'native-base';
+import {ScrollView} from 'native-base';
 import AppHeading from './Heading';
 import React from 'react';
 import {useAtomValue} from 'jotai';
 import {contactsAtom} from '../atoms';
+import {Dimensions} from 'react-native';
 import ContactCard from './ContactCard';
 
 const AllContacts = () => {
   const contacts = useAtomValue(contactsAtom);
 
+  const height = Dimensions.get('screen').height;
+
   return (
-    <Box>
+    <>
       <AppHeading text="All Contacts" />
-      <FlatList
-        data={contacts}
-        renderItem={({item}) => <ContactCard contact={item} />}
-      />
-    </Box>
+      <ScrollView height={height * 0.6}>
+        {contacts.map(c => (
+          <ContactCard key={c.name} contact={c} />
+        ))}
+      </ScrollView>
+    </>
   );
 };
 

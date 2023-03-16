@@ -11,7 +11,7 @@ type Props = {
 const BirthdayCard = ({contact}: Props) => {
   return (
     <Flex
-      mx={3}
+      mx={2}
       my={1}
       borderRadius={8}
       px={2}
@@ -20,14 +20,16 @@ const BirthdayCard = ({contact}: Props) => {
       alignItems="center"
       justifyContent="space-between">
       <Box p={3}>
-        <Text fontSize={16}>{contact.name}</Text>
+        <Text fontSize={14} bold>
+          {contact.name}
+        </Text>
 
-        <Text fontSize={14} color="coolGray.500">
+        <Text fontSize={13} color="coolGray.500">
           {dayjs(contact.dob).format('DD, MMMM')}
         </Text>
       </Box>
       <IconButton
-        icon={<Feather name="send" color={Colors.primary} size={30} />}
+        icon={<Feather name="send" color={Colors.primary} size={22} />}
         borderRadius="full"
       />
     </Flex>

@@ -16,9 +16,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import React, {useState} from 'react';
 import {Colors} from '../theme/colors';
 import addContact from '../firebase/addContact';
+import {getContacts} from '../firebase/useContacts';
 
-import {useAtom, useSetAtom} from 'jotai';
-import {loadingAtom, contactsAtom} from '../atoms';
+import {useAtom, useAtomValue, useSetAtom} from 'jotai';
+import {loadingAtom, contactsAtom, userIdAtom} from '../atoms';
 
 const BirthdayForm = () => {
   // date picker state
@@ -35,6 +36,7 @@ const BirthdayForm = () => {
   //jotai
   const [loading, setLoading] = useAtom(loadingAtom);
   const setContacts = useSetAtom(contactsAtom);
+  const userId = useAtomValue(userIdAtom);
 
   const toast = useToast();
 
@@ -55,14 +57,11 @@ const BirthdayForm = () => {
       name: fname + ' ' + lname,
       dob: date?.toISOString()!,
       phone,
-      mail,
+      email: mail,
     };
     try {
-      const res = await addContact(input);
-      const docs = await res
-        .collection('users/RJeexA94uVxuTqFP3VZs/contacts')
-        .get();
-      const contacts = docs.docs.map(doc => doc.data() as Contact);
+      await addContact(input);
+      const contacts = await getContacts(userId);
       console.log(contacts);
 
       setContacts(contacts);

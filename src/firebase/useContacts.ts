@@ -26,7 +26,8 @@ export const useContacts = () => {
         setLoading(false);
       }
     })();
-  }, [setContacts]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return {data, error, loading};
 };
 
@@ -34,6 +35,8 @@ export async function getContacts(userId: string) {
   const response = await firestore()
     .collection(`users/${userId}/contacts`)
     .get();
-  const contactArr = response.docs.map(doc => doc.data() as Contact);
+  const contactArr = response.docs.map(
+    doc => ({id: doc.id, ...doc.data()} as Contact),
+  );
   return contactArr;
 }

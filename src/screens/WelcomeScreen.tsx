@@ -1,11 +1,11 @@
-import {Text, Center} from 'native-base';
+import {Center, Image} from 'native-base';
 
 import React from 'react';
 
 const WelcomeScreen = () => {
   return (
     <Center flex={1}>
-      <Text>WelcomeScreen</Text>
+      <Image source={require('../assets/cake.png')} alt="flash" />
     </Center>
   );
 };

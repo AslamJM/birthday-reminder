@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native';
+import {Center, Image} from 'native-base';
 import React from 'react';
 
 const SettingsScreen = () => {
   return (
-    <View>
-      <Text>SettingsScreen</Text>
-    </View>
+    <Center flex={1}>
+      <Image source={require('../assets/cake.png')} alt="flash" />
+    </Center>
   );
 };
 

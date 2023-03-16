@@ -7,6 +7,8 @@ import {
   Spacer,
   Button,
   useToast,
+  Badge,
+  Text,
 } from 'native-base';
 import DateTimePicker, {
   DateTimePickerEvent,
@@ -56,13 +58,12 @@ const BirthdayForm = () => {
     const input = {
       name: fname + ' ' + lname,
       dob: date?.toISOString()!,
-      phone,
+      phone: '+94' + phone.startsWith('0') ? phone.slice(1, -1) : phone,
       email: mail,
     };
     try {
       await addContact(input);
       const contacts = await getContacts(userId);
-      console.log(contacts);
 
       setContacts(contacts);
 
@@ -91,20 +92,23 @@ const BirthdayForm = () => {
             <Input
               variant="underlined"
               placeholder="First Name"
-              fontSize={16}
+              fontSize={15}
               value={fname}
               onChangeText={setFname}
               px={2}
             />
+            <FormControl.ErrorMessage>
+              First name is required
+            </FormControl.ErrorMessage>
           </FormControl>
         </Box>
         <Spacer />
         <Box width="49%">
-          <FormControl isRequired>
+          <FormControl>
             <Input
               variant="underlined"
               placeholder="Last Name"
-              fontSize={16}
+              fontSize={15}
               value={lname}
               onChangeText={setLname}
               px={2}
@@ -117,7 +121,7 @@ const BirthdayForm = () => {
           variant="underlined"
           placeholder="Date of Birth"
           value={date ? date.toDateString() : ''}
-          fontSize={16}
+          fontSize={15}
           isDisabled
           px={2}
           rightElement={
@@ -136,11 +140,19 @@ const BirthdayForm = () => {
           <Input
             variant="underlined"
             placeholder="Phone Number"
-            fontSize={16}
+            fontSize={15}
             value={phone}
             onChangeText={setPhone}
             px={2}
+            InputLeftElement={
+              <Badge>
+                <Text fontSize={15}>+94</Text>
+              </Badge>
+            }
           />
+          <FormControl.ErrorMessage>
+            Phone number is required
+          </FormControl.ErrorMessage>
         </FormControl>
       </Box>
       <Box mb={3}>
@@ -148,7 +160,7 @@ const BirthdayForm = () => {
           <Input
             variant="underlined"
             placeholder="E-Mail (optional)"
-            fontSize={16}
+            fontSize={15}
             value={mail}
             onChangeText={setMail}
             px={2}

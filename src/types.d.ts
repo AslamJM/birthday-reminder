@@ -5,3 +5,8 @@ type Contact = {
   phone: string;
   email?: string;
 };
+
+type AuthStackParamList = {
+  PhoneNumber: undefined;
+  Otp: undefined;
+};

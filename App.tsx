@@ -9,6 +9,8 @@ import {userIdAtom, contactsAtom} from './src/atoms';
 import {getContacts} from './src/firebase/useContacts';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 
+import AuthNavigator from './src/navigation/AuthNavigator';
+
 export default function App() {
   const userId = useAtomValue(userIdAtom);
   const setContacts = useSetAtom(contactsAtom);
@@ -36,7 +38,7 @@ export default function App() {
         <WelcomeScreen />
       ) : (
         <NavigationContainer>
-          <AppTab />
+          <AuthNavigator />
         </NavigationContainer>
       )}
     </NativeBaseProvider>

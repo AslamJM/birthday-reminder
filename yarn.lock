@@ -789,6 +789,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@egjs/hammerjs@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
+  integrity sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==
+  dependencies:
+    "@types/hammerjs" "^2.0.36"
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
@@ -1761,6 +1768,11 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
+"@react-native-community/clipboard@^1.2.2", "@react-native-community/clipboard@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/clipboard/-/clipboard-1.5.1.tgz#32abb3ea2eb91ee3f9c5fb1d32d5783253c9fabe"
+  integrity sha512-AHAmrkLEH5UtPaDiRqoULERHh3oNv7Dgs0bTC0hO5Z2GdNokAMPT5w8ci8aMcRemcwbtdHjxChgtjbeA38GBdA==
+
 "@react-native-community/datetimepicker@^6.7.5":
   version "6.7.5"
   resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-6.7.5.tgz#214796f2d131b6af9cb9d4dea69d4a1981fa2236"
@@ -1800,6 +1812,14 @@
     "@expo/config-plugins" "^5.0.4"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
+
+"@react-native-firebase/auth@^17.3.2":
+  version "17.3.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-17.3.2.tgz#a2e9f3de72842aedfe016c7acceb99262e349747"
+  integrity sha512-YvVvKTwpMMWnDThKh4btgAh6XYo7ie1hwwrTOGNd8Vpsr+nGmiPPB0COdiVaQu8KWX1CzPbOuxJdPwWaz9lW/w==
+  dependencies:
+    "@expo/config-plugins" "^5.0.4"
+    plist "^3.0.5"
 
 "@react-native-firebase/firestore@^17.3.2":
   version "17.3.2"
@@ -1868,6 +1888,15 @@
   integrity sha512-CEge+ZLhb1HBrSvv4RwOol7EKLW1QoqVIQlE9TN5MpxS/+VoQvP+cLbuz0Op53/iJfYhtXRFd1ZAd3RTRqto9w==
   dependencies:
     nanoid "^3.1.23"
+
+"@react-navigation/stack@^6.3.16":
+  version "6.3.16"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-6.3.16.tgz#cf94e3c8c1587455515743e91d328beef722e0ab"
+  integrity sha512-KTOn9cNuZ6p154Htbl2DiR95Wl+c7niLPRiGs7gjOkyVDGiaGQF9ODNQTYBDE1OxZGHe/EyYc6T2CbmiItLWDg==
+  dependencies:
+    "@react-navigation/elements" "^1.3.17"
+    color "^4.2.3"
+    warn-once "^0.1.0"
 
 "@react-stately/checkbox@3.0.3":
   version "3.0.3"
@@ -2299,6 +2328,13 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/react-native/-/react-native-2.0.3.tgz#79ad8efc6d3729152da6cb23725b6c364a7349b2"
   integrity sha512-jE58snEKBd9DXfyR4+ssZmYJ/W2mOSnNrvljR0aLyQJL9JKX6vlWELHkRjb3HBbcM9Uy0hZGijXbqEAjOERW2A==
 
+"@twotalltotems/react-native-otp-input@^1.3.11":
+  version "1.3.11"
+  resolved "https://registry.yarnpkg.com/@twotalltotems/react-native-otp-input/-/react-native-otp-input-1.3.11.tgz#cd075f155be188bc9bb294ea8ef311667b8efb3d"
+  integrity sha512-xSsEMa8llYHITKgx1FGwU3uK56Kk6+abgkJpo57pLnUpYC2CZpvhkvRKhFa7Ui6BhdRuh0Ob1O7q234d3CksRg==
+  dependencies:
+    "@react-native-community/clipboard" "^1.2.2"
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.20.0"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.0.tgz#61bc5a4cae505ce98e1e36c5445e4bee060d8891"
@@ -2343,6 +2379,11 @@
   integrity sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==
   dependencies:
     "@types/node" "*"
+
+"@types/hammerjs@^2.0.36":
+  version "2.0.41"
+  resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.41.tgz#f6ecf57d1b12d2befcce00e928a6a097c22980aa"
+  integrity sha512-ewXv/ceBaJprikMcxCmWU1FKyMAQ2X7a9Gtmzw8fcg2kIePI1crERDM818W+XYrxqdBBOdlf2rm137bU+BltCA==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
@@ -4733,7 +4774,7 @@ hermes-profile-transformer@^0.0.6:
   dependencies:
     source-map "^0.7.3"
 
-hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -6004,7 +6045,7 @@ lodash.uniqueid@^4.0.1:
   resolved "https://registry.yarnpkg.com/lodash.uniqueid/-/lodash.uniqueid-4.0.1.tgz#3268f26a7c88e4f4b1758d679271814e31fa5b26"
   integrity sha512-GQQWaIeGlL6DIIr06kj1j6sSmBxyNMwI8kaX9aKpHR/XsMTiaXDVPNPAkiboOTK9OJpTJF/dXT3xYoFQnj386Q==
 
-lodash@^4.17.10, lodash@^4.17.15, lodash@^4.7.0:
+lodash@^4.17.10, lodash@^4.17.15, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -7199,6 +7240,17 @@ react-native-codegen@^0.70.6:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-gesture-handler@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz#2f63812e523c646f25b9ad660fc6f75948e51241"
+  integrity sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==
+  dependencies:
+    "@egjs/hammerjs" "^2.0.17"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"

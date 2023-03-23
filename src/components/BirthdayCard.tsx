@@ -29,7 +29,7 @@ const BirthdayCard = ({contact}: Props) => {
         </Text>
       </Box>
       <IconButton
-        icon={<Feather name="send" color={Colors.primary} size={22} />}
+        icon={<Feather name="gift" color={Colors.primary} size={22} />}
         borderRadius="full"
       />
     </Flex>

@@ -1,4 +1,4 @@
-import {ScrollView} from 'native-base';
+import {Box, ScrollView} from 'native-base';
 import AppHeading from './Heading';
 import React from 'react';
 import {useAtomValue} from 'jotai';
@@ -12,14 +12,15 @@ const AllContacts = () => {
   const height = Dimensions.get('screen').height;
 
   return (
-    <>
+    <Box mt={4}>
       <AppHeading text="All Contacts" />
       <ScrollView height={height * 0.4}>
         {contacts.map(c => (
           <ContactCard key={c.name} contact={c} />
         ))}
+        <Box height={5} />
       </ScrollView>
-    </>
+    </Box>
   );
 };
 

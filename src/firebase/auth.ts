@@ -17,3 +17,8 @@ export const getUser = async (phone: string) => {
     .get();
   return res.docs[0].id;
 };
+
+export const deleteUser = async (userId: string) => {
+  const res = await firestore().collection('users').doc(userId).delete();
+  return res;
+};

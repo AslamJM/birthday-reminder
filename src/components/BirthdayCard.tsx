@@ -18,6 +18,7 @@ const BirthdayCard = ({contact}: Props) => {
       bg="white"
       direction="row"
       alignItems="center"
+      height={55}
       justifyContent="space-between">
       <Box p={3}>
         <Text fontSize={14} bold>

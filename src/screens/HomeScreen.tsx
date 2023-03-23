@@ -13,7 +13,7 @@ import Loading from '../components/Loading';
 
 import {useAtomValue} from 'jotai';
 import {contactsAtom, loadingAtom} from '../atoms';
-import {ScrollView} from 'native-base';
+import {Box, ScrollView} from 'native-base';
 
 export default function HomeScreen() {
   const data = useAtomValue(contactsAtom);
@@ -57,6 +57,7 @@ export default function HomeScreen() {
             ))}
           </>
         )}
+        <Box height={10} />
       </ScrollView>
     </SafeAreaView>
   );

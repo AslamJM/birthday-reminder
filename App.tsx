@@ -4,23 +4,25 @@ import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
 import AppTab from './src/navigation/AppNavigator';
 import {theme} from './src/theme/theme';
-import {useAtomValue, useSetAtom} from 'jotai';
-import {userIdAtom, contactsAtom} from './src/atoms';
-import {getContacts} from './src/firebase/useContacts';
+import {useAtom} from 'jotai';
+import {userIdAtom} from './src/atoms';
 import WelcomeScreen from './src/screens/WelcomeScreen';
-
+import {getUserData} from './src/storage';
 import AuthNavigator from './src/navigation/AuthNavigator';
 
 export default function App() {
-  const userId = useAtomValue(userIdAtom);
-  const setContacts = useSetAtom(contactsAtom);
+  const [userId, setUserId] = useAtom(userIdAtom);
   const [loading, setLoading] = useState(false);
 
   const getData = useCallback(async () => {
+    setLoading(true);
     try {
-      setLoading(true);
-      const contacts = await getContacts(userId);
-      setContacts(contacts);
+      const user = await getUserData();
+      if (!user) {
+        setUserId('');
+      } else {
+        setUserId(user);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -38,7 +40,7 @@ export default function App() {
         <WelcomeScreen />
       ) : (
         <NavigationContainer>
-          <AuthNavigator />
+          {userId.length === 0 ? <AuthNavigator /> : <AppTab />}
         </NavigationContainer>
       )}
     </NativeBaseProvider>

@@ -7,3 +7,7 @@ export const userIdAtom = atom('');
 
 export const confirmationAtom =
   atom<FirebaseAuthTypes.ConfirmationResult | null>(null);
+
+// editing contacts
+export const editModeAtom = atom(false);
+export const selectedContactAtom = atom<Contact | null>(null);

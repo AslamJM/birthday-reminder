@@ -14,7 +14,7 @@ const AllContacts = () => {
   return (
     <>
       <AppHeading text="All Contacts" />
-      <ScrollView height={height * 0.6}>
+      <ScrollView height={height * 0.4}>
         {contacts.map(c => (
           <ContactCard key={c.name} contact={c} />
         ))}

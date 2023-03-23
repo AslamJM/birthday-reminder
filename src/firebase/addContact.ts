@@ -21,3 +21,18 @@ export async function deleteContact(id: string, userId: string) {
     .delete();
   return res;
 }
+
+export async function updateContact(
+  id: string,
+  userId: string,
+  input: Partial<Contact>,
+) {
+  const res = await firestore()
+    .collection(`users/${userId}/contacts`)
+    .doc(id)
+    .update({
+      ...input,
+    });
+
+  return res;
+}

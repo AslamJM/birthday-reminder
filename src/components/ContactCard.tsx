@@ -5,7 +5,12 @@ import Feather from 'react-native-vector-icons/Feather';
 import {Colors} from '../theme/colors';
 import {deleteContact} from '../firebase/addContact';
 import {getContacts} from '../firebase/useContacts';
-import {userIdAtom, contactsAtom} from '../atoms';
+import {
+  userIdAtom,
+  contactsAtom,
+  editModeAtom,
+  selectedContactAtom,
+} from '../atoms';
 import {useAtomValue, useSetAtom} from 'jotai';
 
 type Props = {
@@ -15,6 +20,8 @@ type Props = {
 const ContactCard = ({contact}: Props) => {
   const userId = useAtomValue(userIdAtom);
   const setContacts = useSetAtom(contactsAtom);
+  const setEdit = useSetAtom(editModeAtom);
+  const selectContact = useSetAtom(selectedContactAtom);
   const [loading, setLoading] = useState(false);
 
   const deleteContactHandler = async () => {
@@ -57,6 +64,10 @@ const ContactCard = ({contact}: Props) => {
         <IconButton
           icon={<Feather name="edit" color={Colors.primary} size={20} />}
           borderRadius="full"
+          onPress={() => {
+            selectContact(contact);
+            setEdit(true);
+          }}
         />
         {loading ? (
           <Spinner />
